@@ -34,26 +34,14 @@ class Main {
 
     this.loader = new THREE.TextureLoader();
     this.textures = [
+      'https://picsum.photos/id/396/2048/1024?grayscale',
       'https://picsum.photos/id/345/2048/1024?grayscale',
-      'https://picsum.photos/id/411/2048/1024?grayscale',
-      'https://picsum.photos/id/22/2048/1024?grayscale'
+      'https://picsum.photos/id/389/2048/1024?grayscale',
     ];
     this.loadTextures = [];
     this._setTexture();
 
     this.uniforms = {
-      // uTime: {
-      //   value: 0.0
-      // },
-      // uTex: {
-      //   value: this.texture
-      // },
-      // uResolution: {
-      //   value: new THREE.Vector2(this.viewport.width, this.viewport.height)
-      // },
-      // uTexResolution: {
-      //   value: new THREE.Vector2(2048, 1024)
-      // },
       uTime: {
         value: 0.0
       },
