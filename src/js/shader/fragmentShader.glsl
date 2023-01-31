@@ -28,8 +28,8 @@ void main() {
   float disp = texDisp.r;
   disp = disp * parabola(uProgress, 0.8);
 
-  vec2 dispUv = vec2(uv.x, uv.y + disp);
-  vec2 dispUv2 = vec2(uv.x, uv.y - disp);
+  vec2 dispUv = vec2(uv.x, uv.y - disp);
+  vec2 dispUv2 = vec2(uv.x, uv.y + disp);
 
   vec3 tex1 = texture2D(uTexCurrent, dispUv).rgb;
   vec3 tex2 = texture2D(uTexNext, dispUv2).rgb;
