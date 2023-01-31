@@ -149,15 +149,20 @@ class Main {
 
   _setAnimation() {
 
-    let current;
-    let next;
-
     const tl1 = gsap.timeline({
       scrollTrigger: {
         trigger: '#section02',
         start: 'top center',
         toggleActions: 'play none none reverse',
         markers: true,
+        onEnter: ()=> {
+          console.log('on enter');
+        },
+        onLeaveBack: ()=> {
+          console.log('on leaveback');
+          this.uniforms.uTexCurrent.value = this.loadTextures[0];
+          this.uniforms.uTexNext.value = this.loadTextures[1];
+        }
       }
     });
 
@@ -165,7 +170,21 @@ class Main {
       value: 1.0,
       duration: 0.8,
       ease: "Expo.easeOut",
-
+      onStart: ()=> {
+        console.log('on start');
+      },
+      onComplete: ()=> {
+        console.log('on complete');
+        this.uniforms.uTexCurrent.value = this.loadTextures[1];
+        this.uniforms.uTexNext.value = this.loadTextures[2];
+        this.uniforms.uProgress.value = 0.0;
+      },
+      onReverseComplete: ()=> {
+        console.log('on reverse complete');
+        this.uniforms.uTexCurrent.value = this.loadTextures[0];
+        this.uniforms.uTexNext.value = this.loadTextures[1];
+        // this.uniforms.uProgress.value = 0.0;
+      }
     })
   }
 
