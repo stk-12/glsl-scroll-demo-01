@@ -8,9 +8,6 @@ import Lenis from '@studio-freight/lenis';
 import vertexSource from "./shader/vertexShader.glsl";
 import fragmentSource from "./shader/fragmentShader.glsl";
 
-import img from '../images/image.jpg';
-// import img2 from '../images/photo03.jpg';
-// import img2 from 'https://picsum.photos/id/237/2048/1024?grayscale';
 import imgDisp1 from '../images/displacement.jpg';
 
 class Main {
@@ -154,7 +151,7 @@ class Main {
         trigger: '#section02',
         start: 'top center',
         toggleActions: 'play none none reverse',
-        markers: true,
+        // markers: true,
         onEnter: ()=> {
           console.log('on enter');
         },
@@ -170,9 +167,9 @@ class Main {
       value: 1.0,
       duration: 0.8,
       ease: "Expo.easeOut",
-      onStart: ()=> {
-        console.log('on start');
-      },
+      // onStart: ()=> {
+      //   console.log('on start');
+      // },
       onComplete: ()=> {
         console.log('on complete');
         this.uniforms.uTexCurrent.value = this.loadTextures[1];
@@ -183,6 +180,45 @@ class Main {
         console.log('on reverse complete');
         this.uniforms.uTexCurrent.value = this.loadTextures[0];
         this.uniforms.uTexNext.value = this.loadTextures[1];
+        // this.uniforms.uProgress.value = 0.0;
+      }
+    })
+
+
+    const tl2 = gsap.timeline({
+      scrollTrigger: {
+        trigger: '#section03',
+        start: 'top center',
+        toggleActions: 'play none none reverse',
+        // markers: true,
+        onEnter: ()=> {
+          console.log('on enter');
+        },
+        onLeaveBack: ()=> {
+          console.log('on leaveback');
+          this.uniforms.uTexCurrent.value = this.loadTextures[1];
+          this.uniforms.uTexNext.value = this.loadTextures[2];
+        }
+      }
+    });
+
+    tl2.to(this.uniforms.uProgress, {
+      value: 1.0,
+      duration: 0.8,
+      ease: "Expo.easeOut",
+      // onStart: ()=> {
+      //   console.log('on start');
+      // },
+      onComplete: ()=> {
+        console.log('on complete');
+        this.uniforms.uTexCurrent.value = this.loadTextures[2];
+        this.uniforms.uTexNext.value = this.loadTextures[1];
+        this.uniforms.uProgress.value = 0.0;
+      },
+      onReverseComplete: ()=> {
+        console.log('on reverse complete');
+        this.uniforms.uTexCurrent.value = this.loadTextures[1];
+        this.uniforms.uTexNext.value = this.loadTextures[2];
         // this.uniforms.uProgress.value = 0.0;
       }
     })
