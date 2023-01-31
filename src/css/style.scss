@@ -5,8 +5,8 @@
 
 body {
   font-family: 'Bebas Neue', cursive;
-  background: #fff;
-  color: #000;
+  background: #000;
+  color: #fff;
   overflow-x: hidden;
 }
 
@@ -19,6 +19,7 @@ canvas {
   position: fixed;
   top: 0;
   left: 0;
+  opacity: 0.4;
 }
 
 .scroll {
