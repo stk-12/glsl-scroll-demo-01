@@ -154,7 +154,7 @@ class Main {
     tl1.to(this.uniforms.uProgress, {
       value: 1.0,
       duration: 0.8,
-      ease: "Expo.easeOut",
+      ease: "Circ.easeInOut",
       // onStart: ()=> {
       //   console.log('on start');
       // },
@@ -193,7 +193,7 @@ class Main {
     tl2.to(this.uniforms.uProgress, {
       value: 1.0,
       duration: 0.8,
-      ease: "Expo.easeOut",
+      ease: "Circ.easeInOut",
       // onStart: ()=> {
       //   console.log('on start');
       // },
